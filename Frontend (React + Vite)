@@ -1,0 +1,17 @@
+// App.jsx
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Dashboard from './pages/Dashboard'
+import Projetos from './pages/Projetos'
+import Cursos from './pages/Cursos'
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/projetos" element={<Projetos />} />
+        <Route path="/cursos" element={<Cursos />} />
+      </Routes>
+    </BrowserRouter>
+  )
+}
