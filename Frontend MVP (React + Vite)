@@ -1,0 +1,4 @@
+# Criar frontend
+cd .. && npm create vite@latest frontend -- --template react
+cd frontend && npm install axios react-router-dom lucide-react tailwindcss postcss autoprefixer
+npx tailwindcss init -p
