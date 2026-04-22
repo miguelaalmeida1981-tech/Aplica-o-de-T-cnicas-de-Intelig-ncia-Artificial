@@ -1,0 +1,24 @@
+-- Tabelas principais
+CREATE TABLE alunos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    ra VARCHAR(20) UNIQUE,
+    xp INTEGER DEFAULT 0
+);
+
+CREATE TABLE projetos (
+    id SERIAL PRIMARY KEY,
+    titulo VARCHAR(200),
+    aluno_id INTEGER REFERENCES alunos(id),
+    github_url TEXT,
+    demo_url TEXT,
+    score_ia FLOAT,
+    status VARCHAR(20)
+);
+
+CREATE TABLE cursos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100),
+    modulo INTEGER,
+    progresso_aluno JSONB
+);
