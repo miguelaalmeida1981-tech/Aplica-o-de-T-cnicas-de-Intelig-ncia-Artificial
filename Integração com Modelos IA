@@ -1,0 +1,18 @@
+# services/ia_service.py
+import openai
+from transformers import pipeline
+
+class IAService:
+    def __init__(self):
+        self.classificador = pipeline("text-classification", 
+                                    model="neuralmind/bert-base-portuguese-cased")
+        self.gerador_codigo = pipeline("text-generation",
+                                     model="microsoft/DialoGPT-medium")
+    
+    def analisar_codigo(self, codigo: str) -> dict:
+        """Analisa qualidade do código do aluno"""
+        resultado = self.classificador(codigo)
+        return {
+            "qualidade": resultado[0]['score'],
+            "sugestoes": self.gerar_sugestoes(codigo)
+        }
