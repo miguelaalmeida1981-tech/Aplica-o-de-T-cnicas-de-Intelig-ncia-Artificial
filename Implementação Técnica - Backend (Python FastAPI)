@@ -1,0 +1,26 @@
+# main.py
+from fastapi import FastAPI
+from pydantic import BaseModel
+from typing import List
+import strawberry
+from strawberry.fastapi import GraphQLRouter
+
+app = FastAPI(title="COMAC IA Platform")
+
+class Projeto(BaseModel):
+    id: int
+    titulo: str
+    aluno_id: int
+    tecnologias: List[str]
+    status: str
+    score_ia: float
+
+@app.post("/projetos/")
+async def criar_projeto(projeto: Projeto):
+    # Lógica de criação com IA
+    return {"id": 1, "status": "criado"}
+
+# GraphQL para queries complexas
+schema = strawberry.Schema(...)
+graphql_app = GraphQLRouter(schema)
+app.include_router(graphql_app, prefix="/graphql")
