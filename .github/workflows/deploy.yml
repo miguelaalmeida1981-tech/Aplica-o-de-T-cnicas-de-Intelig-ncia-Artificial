@@ -1,0 +1,29 @@
+name: Deploy COMAC IA
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build & Push Docker
+      uses: docker/setup-buildx-action@v2
+      with:
+        push: true
+        tags: ghcr.io/seuusuario/comac-ia:latest
+    
+    - name: Deploy to DigitalOcean
+      uses: appleboy/ssh-action@v0.1.5
+      with:
+        host: ${{ secrets.DO_HOST }}
+        username: ${{ secrets.DO_USER }}
+        key: ${{ secrets.DO_SSH_KEY }}
+        script: |
+          cd comac-ia-platform
+          git pull
+          docker-compose -f docker-compose.prod.yml down
+          docker-compose -f docker-compose.prod.yml up -d --build
+          docker system prune -f
