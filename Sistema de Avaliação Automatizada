@@ -1,0 +1,8 @@
+def avaliar_projeto(projeto):
+    score = 0
+    # Critérios automáticos
+    score += testar_funcionalidade(projeto.codigo)
+    score += avaliar_documentacao(projeto.readme)
+    score += analisar_complexidade(projeto)
+    score += feedback_ia(projeto)
+    return score / 4
