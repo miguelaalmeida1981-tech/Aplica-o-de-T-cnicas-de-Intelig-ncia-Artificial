@@ -1,0 +1,12 @@
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│   FRONTEND      │    │    BACKEND       │    │   INFRAESTRUTURA│
+│  React/Vue.js   │◄──►│  Node.js/Python  │◄──►│  AWS/DigitalOcean│
+│  + Tailwind CSS │    │  + FastAPI/Django│    │  + Docker/K8s   │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
+         │                       │                       │
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌──────────────────┐    ┌─────────────────┐
+│  IA/ML MODELS   │    │    DATABASE      │    │   MONITORAMENTO │
+│  TensorFlow     │    │  PostgreSQL      │    │   Prometheus    │
+│  + HuggingFace  │    │  + Redis         │    │   + Grafana     │
+└─────────────────┘    └──────────────────┘    └─────────────────┘
