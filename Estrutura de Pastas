@@ -1,0 +1,7 @@
+comac-ia-platform/
+├── backend/              # API FastAPI
+├── frontend/             # React + Vite
+├── docs/                 # Documentação
+├── docker/               # Dockerfiles
+├── scripts/              # Scripts de deploy
+└── README.md
