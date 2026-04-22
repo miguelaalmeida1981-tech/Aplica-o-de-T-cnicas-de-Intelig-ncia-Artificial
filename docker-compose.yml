@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: comac_ia
+      POSTGRES_USER: comac
+      POSTGRES_PASSWORD: comac123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend/comac_ia
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://comac:comac123@db:5432/comac_ia
+    depends_on:
+      - db
+    volumes:
+      - ./backend/comac_ia:/app
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+
+volumes:
+  postgres_data:
