@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  api:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://...
+  
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+  
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: comac_ia
+  
+  redis:
+    image: redis:alpine
